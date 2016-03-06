@@ -1,0 +1,416 @@
+body {
+	background: #111;
+	font-family: Helvetica, Arial;
+	font-size: 14px;
+	font-style: bold;
+}
+
+
+
+i {
+	color: white;
+	transition: 0.2s ease-in;
+			transform: scale(1);
+	   -moz-transform: scale(1);
+	-webkit-transform: scale(1);
+}
+
+video{
+	position:absolute;
+}
+
+video::-webkit-media-controls-enclosure{
+  z-index:2147483645;
+  display:none;
+}
+
+.player{
+	position:relative;
+	width: 1280px;
+	height: 538px;
+	left: calc(50% - 640px);
+	top: 200px;
+	overflow: hidden;
+}
+
+.seek-bar, .play-pause-container, .forward, .backward, .seek-bar, .time-container, .volume-btn, .playing-rate, .full-screen{
+	display: inline-block;
+}
+
+/**
+* AMBILIGHT
+*/
+
+#thecanvas, #thumbnail_img{
+	display: none;
+	width: 30px;
+	height:30px;
+}
+.gradients{
+	position: absolute;
+	height:908px;
+	border-radius: 100%;
+	width:1320px;
+	top: 200px;
+	left: calc(50% - 660px);
+}
+
+.gradients:nth-child(1){
+	background: -webkit-radial-gradient(center, ellipse cover, #111111 0%,#111111 70%);
+}
+
+
+/**
+* CONTROL BAR
+*/
+.controls{
+  z-index:2147483647;
+}
+
+.controls{
+	position: absolute;
+	height: 50px;
+	width:100%;
+	background-color: rgba(0, 0, 0, 0.6);
+	bottom: -53px;
+	transition: 0.5s bottom ease;
+	transition-delay: 0.2s;
+}
+
+.player:hover .controls{
+	bottom: 0;
+	transition: bottom 0.3s ease;
+}
+
+/**
+* SEEK BAR
+*/
+
+.seek-bar{
+	position:absolute;
+	bottom:50px;
+	left:0px;
+	width: 100%;
+	height: 5px;
+	background-color: gray;
+	transition: transform 0.2s ease;
+	transform-origin:bottom left;
+			transform:scale(1);
+	   -moz-transform:scale(1);
+	-webkit-transform:scale(1);
+}
+
+.progress-bar{
+	width: 100%;
+	height:5px;
+	background : red;
+	transition: transform 0.2s ease;
+	transform-origin: top left;
+			transform:scale(0);
+	   -moz-transform:scale(0);
+	-webkit-transform:scale(0);
+}
+
+.seek-bar:hover, .seek-bar:hover .progress-bar{
+			transform: scaleY(1.7);
+	   -moz-transform: scaleY(1.7);
+	-webkit-transform: scaleY(1.7);
+}
+
+
+/**
+* PREVISUALIZATION
+*/
+
+#previz{
+	border: 2px solid gray;
+	display:none;
+	position:absolute;
+	left:0px;
+	bottom: 63px;
+}
+
+
+/**
+* VOLUME
+*/
+
+.volume-bar{
+	position:absolute;
+	width: 150px;
+	height: 8px;
+	background : rgba(130, 130, 130, 0.7);
+	left:40px;
+	top:12px;
+	border: 1px solid rgba(130, 130, 130, 0.7);
+	transition: transform 0.2s ease-in;
+	transition-delay : 0.05s;
+	transform-origin:left;
+			transform:scaleX(0);
+	   -moz-transform:scaleX(0);
+	-webkit-transform:scaleX(0);
+}
+
+.volume-progress{
+	width:150px;
+	height: 8px;
+	background : red;
+	transform-origin: bottom left;
+			transform:scale(0);
+	   -moz-transform:scale(0);
+	-webkit-transform:scale(0);
+}
+
+.volume-btn{
+	position:absolute;
+	top:5px;
+	width:40px;
+	height:40px;
+	left:100px;
+	line-height: 50px;
+}
+
+.volume-btn i{
+	position:absolute;
+	top: 5px;
+	left: 5px;
+}
+
+.volume-btn:hover{
+	width:200px;
+}
+
+.volume-btn:hover .volume-bar{
+			transform:scaleX(1);
+	   -moz-transform:scaleX(1);
+	-webkit-transform:scaleX(1);
+}
+
+/**
+* FORWARD / BACKWARD BUTTONS
+*/
+
+.forward, .backward {
+	width:40px;
+	height:40px;
+	background: none;
+	border:none;
+}
+
+.forward{
+	position:absolute;
+	top:5px;
+	left: 60px;
+}
+.backward{
+	position:absolute;
+	left: 30px;
+	top:10px;
+	background: none;
+	border:none;
+}
+
+/**
+* PLAY PAUSE
+*/
+
+.play-pause-button{
+  position:relative;
+  width:30px;
+  height:30px;
+  position:absolute;
+  left: 10px;
+  top: 12px;
+  cursor : pointer;
+}
+
+.play-pause.play{
+ position:absolute;
+ left:2px;
+ width: 0;
+  height: 0;
+  background-color: transparent;
+  border-style: solid;
+  border-width: 10px 0 10px 17px;
+  border-color: transparent transparent transparent #fefefe;
+}
+
+.play-pause.pause{
+  position:absolute;
+  left:2px;
+  width: 7px;
+  height: 20px;
+  background-color : #fefefe;
+  border-width: 0px;
+}
+
+.play-pause{
+  transition: all 0.4s;
+}
+
+.pause-support{
+	position:absolute;
+  	left:2px;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 10px 0 10px 17.3px;
+	border-color: transparent transparent transparent #fefefe;
+}
+
+.pause-support.pause{
+  position:absolute;
+  left:14px;
+  width: 7px;
+  height: 20px;
+  background-color : #fefefe;
+  border-width: 0px;
+}
+
+/**
+* RESTART
+*/
+
+.container-restart {
+  display:none;
+  position: relative;
+  left: 2px;
+  top: 10px;
+  width: 30px;
+  height: 30px;
+  transition: 0.5s ease-in;
+  		  transform:rotateY(180deg) rotateZ(0deg);
+ 	 -moz-transform:rotateY(180deg) rotateZ(0deg);
+  -webkit-transform:rotateY(180deg) rotateZ(0deg);
+  cursor: pointer;
+}
+
+.container-restart:hover {
+  	  	  transform: rotateY(180deg) rotateZ(360deg);
+  	 -moz-transform: rotateY(180deg) rotateZ(360deg);
+  -webkit-transform: rotateY(180deg) rotateZ(360deg);
+}
+
+/**
+* TIME DISPLAY
+*/
+
+.time-container{
+	position:absolute;
+	top: 15px;
+	left: 150px;
+	color: white;
+	transition: left 0.3s ease;
+}
+
+
+/*
+* PLAYING RATE
+*/
+
+.playing-rate{
+	width: 50px;
+	height: 30px;
+	position: absolute;
+	text-align: center;
+	right: 50px;
+	top: 10px;
+	 		transform: rotateZ(0deg);
+	   -moz-transform: rotateZ(0deg);
+	-webkit-transform: rotateZ(0deg);
+
+}
+
+.playing-rate:hover i {
+			transform: rotateZ(30deg);
+	   -moz-transform: rotateZ(30deg);
+	-webkit-transform: rotateZ(30deg);
+}
+.playing-rate>ul{
+	position:absolute;
+	width:230px;
+	height:250px;
+	background-color: rgba(200, 200, 200, 0.6);
+	padding:0;
+	opacity:0;
+	bottom: 29px;
+	right : -400px;
+	transition : all 0.3s ease ;
+}
+
+.playing-rate:hover ul{
+
+	opacity: 1;
+	right: -50px;
+}
+
+
+.playing-rate li {
+	display:block;
+	width:100%;
+	height: 20px;
+	line-height: 10px;
+	opacity: 1;
+	list-style: none;
+	border-top: thin solid rgba(200,200,200, 0.3);
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+.rate-selected{
+	background-color: rgba(200,200,200, 0.8);
+}
+
+/**
+* FULL SCREEN
+*/
+
+
+.full-screen{
+	position:absolute;
+	right: 15px;
+	top: 10px;
+	width: 30px;
+	height: 30px;
+	border: 0px;
+}
+
+.full-screen:hover i{
+			transform:scale(0.8);
+	   -moz-transform:scale(0.8);
+	-webkit-transform:scale(0.8);
+}
+
+/**
+* SHARE
+*/
+
+.share{
+	position: absolute;
+	top: 5px;
+	right: 100px;
+	width:40px;
+	height:40px;
+
+}
+
+.share-url{
+	opacity: 0;
+}
+
+.url-copied{
+	position:absolute;
+	left: calc(50% - 250px);
+	top: 100px;
+	width:500px;
+	height: 100px;
+	font-size: 20px;
+	opacity:1;
+	color: white;
+}
+
+button{
+	outline:none;
+	border:none;
+	background:none;
+}

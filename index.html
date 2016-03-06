@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="styles/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+<body>
+
+	<div class="url-copied"></div>
+	<div class="gradients"></div>
+	<div class="gradients"></div>
+	<div class="player">
+		<video src="resources/video.mp4">
+		Your browser doesnt support HTML5 Videos	
+		</video>
+		<div class="controls">
+			<div class="play-pause-container">
+				<div class="play-pause-button" onclick="changeIt()">
+  					<div class="play-pause play" state='play'></div>
+  					<div class="pause-support"></div>
+  				</div>
+  				<div class="container-restart">
+  					<i class="fa fa-repeat fa-2x"></i>
+				</div>
+			</div>
+			<button class="forward"> <i class="fa fa-forward fa-2x"></i> </button>
+			<button class="backward"> <i class="fa fa-backward fa-2x"></i> </button>
+
+			<div class="seek-bar">
+				<div class="progress-bar"></div>
+			</div>
+			<video id="previz" src="resources/video.mp4"  width="150">
+				<source src="resources/video.mp4" type="video/mp4">
+				<source src="resources/video.ogv" type="video/ogv">
+				<source src="resources/video.webm" type="video/webm">
+			</video>
+			<div class="time-container"></div>
+			<div class="volume-btn">
+				<i class="fa fa-volume-up fa-2x"></i>
+				<div class="volume-bar">
+					<div class="volume-progress"></div>
+				</div>
+			</div>
+			<div class="playing-rate">
+				<i class="fa fa-cog fa-2x"></i>
+				<ul>
+					<h3>speed rate</h3>
+					<li rate="3">3</li>
+					<li rate="1.5">1.5</li>
+					<li rate="1">Normal</li>
+					<li rate="0.5">0.5</li>
+					<li rate="0.25">0.25</li>
+				</ul>
+			</div>
+			<button class="full-screen"><i class="fa fa-arrows-alt fa-2x"></i></button>
+			<button class="share"><i class="fa fa-share fa-2x"></i></button>
+		</div>
+	</div>
+	<canvas id="thecanvas">
+		
+	</canvas>
+	<canvas id="previzcanvas">
+		
+	</canvas>
+	<img src="" alt="" id="previzimg">
+	<img id="thumbnail_img" alt="Right click to save" />
+	<p>
+  		<textarea class="share-url"></textarea>
+	</p>
+	<script src="scripts/color-thief.js"></script>
+	<script src="scripts/quantize.js"></script>
+	<script src="scripts/jquery.js"></script>
+	<script src="scripts/script.js"></script>
+
+</body>
+</html>
